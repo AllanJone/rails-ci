@@ -6,6 +6,7 @@ application up and running.
 Reference:
 
 https://tmasuyama1114.com/docker-compose-rails6-mysql-development
+https://blog.devgenius.io/testing-a-rails-api-with-rspec-82dedc9f15df
 
 Things you may want to cover:
 
