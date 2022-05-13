@@ -2,7 +2,7 @@ name: Run Codebuild
 on: [push]
 env:
   REGION: ap-northeast-1
-  PROJECT_NAME: run-github-actions
+  PROJECT_NAME: rails-ci
 jobs:
   deploy:
     runs-on: ubuntu-latest
