@@ -21,9 +21,9 @@ phases:
       # - bundle exec rubocop
       - echo "Running tests ..."
       - bundle exec rspec --format progress --format RspecJunitFormatter --out rspec.xml
-  reports:
-    rspec_reports:
-        files:
-            - 'rspec.xml'
-        # base-directory: <test report directory>
-        file-format: JUNITXML
+reports:
+  rspec_reports:
+      files:
+          - 'rspec.xml'
+      # base-directory: <test report directory>
+      file-format: JUNITXML

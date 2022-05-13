@@ -10,6 +10,8 @@ https://blog.devgenius.io/testing-a-rails-api-with-rspec-82dedc9f15df
 https://zenn.dev/ohsawa0515/articles/gha-aws-codebuild-run-codebuild
 https://www.youtube.com/watch?v=ir5U6MxoASY
 https://tech.actindi.net/2020/12/23/080128
+https://qiita.com/t-koshi/items/a5de8f0ade08d00784bd
+https://docs.aws.amazon.com/codebuild/latest/userguide/test-report-rspec.html
 
 # Commands:
 * docker compose up -d
