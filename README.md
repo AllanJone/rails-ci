@@ -9,12 +9,13 @@ https://tmasuyama1114.com/docker-compose-rails6-mysql-development
 https://blog.devgenius.io/testing-a-rails-api-with-rspec-82dedc9f15df
 https://zenn.dev/ohsawa0515/articles/gha-aws-codebuild-run-codebuild
 https://www.youtube.com/watch?v=ir5U6MxoASY
+https://tech.actindi.net/2020/12/23/080128
 
 # Commands:
 * docker compose up -d
 * docker-compose run web rails db:create
-* rails db:create
-* rails db:migrate
+* rake db:create
+* rake db:migrate
 
 # Things you may want to cover:
 

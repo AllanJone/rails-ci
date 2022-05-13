@@ -8,7 +8,7 @@ ruby '2.7.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.5', '>= 6.1.5.1'
 # Use mysql as the database for Active Record
-gem 'mysql2', '~> 0.5'
+gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -43,7 +43,6 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'rspec-rails'
   gem 'spring'
 end
 
@@ -54,6 +53,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rspec-rails'
   gem 'rubocop'
   gem 'rubocop-checkstyle_formatter'
   gem 'rubocop-performance', require: false

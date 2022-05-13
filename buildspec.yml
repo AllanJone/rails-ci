@@ -8,15 +8,22 @@ phases:
       - echo "Installing Latest Ruby version ..."
       # - git -C ~/.rbenv/plugins/ruby-build pull
       - rbenv install 2.7.5 && rbenv global 2.7.5
-      - bundle install
+      - bundle _2.1.4_ install
+      - gem install rspec_junit_formatter
   pre_build:
     commands:
       - echo "Preparing database to run tests ..."
-      - bundle exec rake db:create RAILS_ENV=test
-      - bundle exec rake db:migrate RAILS_ENV=test
+      - bundle exec rails db:create RAILS_ENV=test
+      - bundle exec rails db:migrate RAILS_ENV=test
   build:
     commands:
-      - echo "Checking linting ..."
-      - bundle exec rubocop
+      # - echo "Checking linting ..."
+      # - bundle exec rubocop
       - echo "Running tests ..."
-      - bundle exec rspec spec
+      - bundle exec rspec --format progress --format RspecJunitFormatter --out rspec.xml
+  reports:
+    rspec_reports:
+        files:
+            - 'rspec.xml'
+        # base-directory: <test report directory>
+        file-format: JUNITXML
