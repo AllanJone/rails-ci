@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+        ruby: 2.7.5
+    commands:
+      - echo "Installing Bundler ..."
+      - gem install bundler
+      - bundle install
+  pre_build:
+    commands:
+      - echo "Preparing database to run tests ..."
+      - bundle exec rails db:create RAILS_ENV=test
+      - bundle exec rails db:migrate RAILS_ENV=test
+  build:
+    commands:
+      - echo "Running tests ..."
+      - bundle exec rspec spec
