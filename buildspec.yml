@@ -1,7 +1,7 @@
 version: 0.2
 
 phases:
-  install:
+  build:
     runtime-versions:
         ruby: 2.7
     commands:
@@ -9,12 +9,16 @@ phases:
       # - git -C ~/.rbenv/plugins/ruby-build pull
       - rbenv install 2.7.5 && rbenv global 2.7.5
       - bundle install
-  pre_build:
+  prepare_db:
     commands:
       - echo "Preparing database to run tests ..."
-      - bundle exec rails db:create RAILS_ENV=test
-      - bundle exec rails db:migrate RAILS_ENV=test
-  build:
+      - bundle exec rake db:create RAILS_ENV=test
+      - bundle exec rake db:migrate RAILS_ENV=test
+  rubocop:
+    commands:
+      - echo "Checking linting ..."
+      - bundle exec rubocop
+  rspec:
     commands:
       - echo "Running tests ..."
       - bundle exec rspec spec
