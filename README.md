@@ -7,6 +7,8 @@ application up and running.
 
 https://tmasuyama1114.com/docker-compose-rails6-mysql-development
 https://blog.devgenius.io/testing-a-rails-api-with-rspec-82dedc9f15df
+https://zenn.dev/ohsawa0515/articles/gha-aws-codebuild-run-codebuild
+https://www.youtube.com/watch?v=ir5U6MxoASY
 
 # Commands:
 * docker compose up -d
