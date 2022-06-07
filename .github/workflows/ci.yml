@@ -1,4 +1,4 @@
-name: Run Codebuild
+name: CI
 on: [push]
 jobs:
   deploy:
@@ -21,8 +21,8 @@ jobs:
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
+          ruby-version: '3.0'
           bundler-cache: true
-          ruby-version: 3.0
 
       - name: Cache node modules
         uses: actions/cache@v2
