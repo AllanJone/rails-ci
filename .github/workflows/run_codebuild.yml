@@ -1,4 +1,4 @@
-name: CI
+name: Run Codebuild
 on: [push, pull_request]
 permissions:
   contents: write
