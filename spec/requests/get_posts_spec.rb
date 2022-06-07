@@ -10,7 +10,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'returns all posts' do
-      expect(json.size).to eq(10)
+      expect(json.size).to eq(9)
     end
 
     it 'returns status code 200' do
