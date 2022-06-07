@@ -45,6 +45,13 @@ jobs:
           cp config/database.yml.ci config/database.yml
           bundle exec rails db:create RAILS_ENV=test
           bundle exec rails db:migrate RAILS_ENV=test
+
+      - name: Run rubocop with reviewdog
+        uses: reviewdog/action-rubocop@v2
+        with:
+          fail_on_error: true
+          reporter: github-check
+          # reporter: github-pr-check
           
       - name: Run rspec
         run: bundle exec rspec -f j -o tmp/rspec_results.json -f p
@@ -56,22 +63,22 @@ jobs:
           json-path: tmp/rspec_results.json
         if: always()
 
-  rubocop:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+  # rubocop:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 10
     
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
+  #     - name: Set up Ruby
+  #       uses: ruby/setup-ruby@v1
+  #       with:
+  #         bundler-cache: true
 
-      - name: Run rubocop with reviewdog
-        uses: reviewdog/action-rubocop@v2
-        with:
-          fail_on_error: true
-          # reporter: github-check
-          reporter: github-pr-check
+  #     - name: Run rubocop with reviewdog
+  #       uses: reviewdog/action-rubocop@v2
+  #       with:
+  #         fail_on_error: true
+  #         # reporter: github-check
+  #         reporter: github-pr-check
