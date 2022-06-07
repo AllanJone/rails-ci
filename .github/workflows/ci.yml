@@ -21,7 +21,6 @@ jobs:
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
-          # ruby-version: '3.1.2'
           bundler-cache: true
 
       - name: Run rubocop with reviewdog
@@ -29,7 +28,6 @@ jobs:
         with:
           fail_on_error: true
           reporter: github-check
-          # reporter: github-pr-check
 
       - name: Cache node modules
         uses: actions/cache@v2
@@ -62,23 +60,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           json-path: tmp/rspec_results.json
         if: always()
-
-  # rubocop:
-  #   runs-on: ubuntu-latest
-  #   timeout-minutes: 10
-    
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-
-  #     - name: Set up Ruby
-  #       uses: ruby/setup-ruby@v1
-  #       with:
-  #         bundler-cache: true
-
-  #     - name: Run rubocop with reviewdog
-  #       uses: reviewdog/action-rubocop@v2
-  #       with:
-  #         fail_on_error: true
-  #         # reporter: github-check
-  #         reporter: github-pr-check
