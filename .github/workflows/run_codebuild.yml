@@ -19,16 +19,24 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 3.0
-      - name: Bundle Install
+          bundler-cache: true
+
+      - name: Bundler and gem install
         run: |
           gem install bundler
-          bundle install
-      - name: Prepare and Test
+          bundle install --jobs 4 --retry 3 --path vendor/bundle
+
+      - name: Database create and migrate
         run: |
-          bundle exec rake db:schema:load db:migrate
-          bundle exec rspec
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
+          
+      - name: Run rspec
+        run: bundle exec rspec
