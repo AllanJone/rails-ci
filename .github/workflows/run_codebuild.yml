@@ -25,7 +25,6 @@ jobs:
           gem install bundler
           bundle install
       - name: Build and Test
-    before_script:
-      - bundle exec rake db:schema:load db:migrate
-    script:
-      - bundle exec rspec
+      - run: |
+          bundle exec rake db:schema:load db:migrate
+          bundle exec rspec
