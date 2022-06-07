@@ -72,8 +72,6 @@ jobs:
       - name: Run rubocop with reviewdog
         uses: reviewdog/action-rubocop@v2
         with:
-          rubocop_version: gemfile
-          rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
           reporter: github-pr-review
 
       # - name: Run rubocop
