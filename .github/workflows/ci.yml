@@ -72,4 +72,5 @@ jobs:
       - name: Run rubocop with reviewdog
         uses: reviewdog/action-rubocop@v2
         with:
+          fail_on_error: true
           reporter: github-check
