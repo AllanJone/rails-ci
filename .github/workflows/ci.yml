@@ -1,7 +1,7 @@
 name: CI
 on: [push]
 jobs:
-  deploy:
+  rspec:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -55,3 +55,19 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           json-path: tmp/rspec_results.json
         if: always()
+
+  rubocop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Run rubocop
+        run: bundle exec rubocop
