@@ -4,12 +4,9 @@ require:
 
 # Common configuration.
 AllCops:
-  # Disable cop pending
   NewCops: disable
-  # Ignore message suggest extensions
   SuggestExtensions:
     rubocop-rspec: false
-  # Include gemspec and Rakefile
   Include:
     - '**/*.rb'
     - '**/*.gemspec'
@@ -25,3 +22,10 @@ AllCops:
     - 'config/environments/*'
     - 'config/routes/*'
     - 'node_modules/**/*'
+
+# Temporary configuration
+Metrics/BlockLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
