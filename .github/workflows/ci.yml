@@ -73,4 +73,5 @@ jobs:
         uses: reviewdog/action-rubocop@v2
         with:
           fail_on_error: true
-          reporter: github-check
+          # reporter: github-check
+          reporter: github-pr-check
