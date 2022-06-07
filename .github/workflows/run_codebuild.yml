@@ -47,4 +47,11 @@ jobs:
           bundle exec rails db:migrate RAILS_ENV=test
           
       - name: Run rspec
-        run: bundle exec rspec
+        run: bundle exec rspec -f j -o tmp/rspec_results.json -f p
+
+      - name: RSpec Report
+        uses: SonicGarden/rspec-report-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          json-path: tmp/rspec_results.json
+        if: always()
