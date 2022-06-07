@@ -1,8 +1,5 @@
 name: Run Codebuild
-on: [push, pull_request]
-permissions:
-  contents: write
-  pull-requests: write
+on: [push]
 jobs:
   deploy:
     runs-on: ubuntu-latest
