@@ -20,10 +20,11 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7.5
+      - name: Bundle Install
         run: |
           gem install bundler
           bundle install
-      - name: Build and Test
+      - name: Prepare and Test
         run: |
           bundle exec rake db:schema:load db:migrate
           bundle exec rspec
