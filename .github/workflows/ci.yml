@@ -1,0 +1,31 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mysql_test:
+        image: mysql:5.7
+        environment:
+          MYSQL_DATABASE: myapp_test
+          MYSQL_USER: root
+          MYSQL_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: password
+    steps:
+      - name: Code Checkout
+      - uses: actions/checkout@v2
+      - name: Setup Ruby
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.5
+      - run: |
+          gem install bundler
+          bundle install
+      - name: Build and Test
+    before_script:
+      - bundle exec rake db:schema:load db:migrate
+    script:
+      - bundle exec rspec

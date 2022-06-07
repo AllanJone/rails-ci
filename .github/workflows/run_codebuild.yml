@@ -1,22 +1,22 @@
-name: Run Codebuild
-on: [push]
-env:
-  REGION: ap-northeast-1
-  PROJECT_NAME: rails-ci
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Configure AWS Credentials
-      # v1
-      uses: aws-actions/configure-aws-credentials@cefc5912bc61e2b5a3b049c839fc283c7712d4e0
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-        aws-region: ${{ env.REGION }}
-    - name: Run CodeBuild
-      # v1.0.3
-      uses: aws-actions/aws-codebuild-run-build@0a2ddc3a24e0f6b41d4a61635d87dcb2482c7b49
-      with:
-        project-name: ${{ env.PROJECT_NAME }}
+# name: CI
+# on: [push, pull_request]
+# env:
+#   REGION: ap-northeast-1
+#   PROJECT_NAME: rails-ci
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Configure AWS Credentials
+#       # v1
+#       uses: aws-actions/configure-aws-credentials@cefc5912bc61e2b5a3b049c839fc283c7712d4e0
+#       with:
+#         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+#         aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+#         aws-region: ${{ env.REGION }}
+#     - name: Run CodeBuild
+#       # v1.0.3
+#       uses: aws-actions/aws-codebuild-run-build@0a2ddc3a24e0f6b41d4a61635d87dcb2482c7b49
+#       with:
+#         project-name: ${{ env.PROJECT_NAME }}
