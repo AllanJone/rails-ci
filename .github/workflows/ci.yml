@@ -24,6 +24,13 @@ jobs:
           # ruby-version: '3.1.2'
           bundler-cache: true
 
+      - name: Run rubocop with reviewdog
+        uses: reviewdog/action-rubocop@v2
+        with:
+          fail_on_error: true
+          reporter: github-check
+          # reporter: github-pr-check
+
       - name: Cache node modules
         uses: actions/cache@v2
         with:
@@ -45,13 +52,6 @@ jobs:
           cp config/database.yml.ci config/database.yml
           bundle exec rails db:create RAILS_ENV=test
           bundle exec rails db:migrate RAILS_ENV=test
-
-      - name: Run rubocop with reviewdog
-        uses: reviewdog/action-rubocop@v2
-        with:
-          fail_on_error: true
-          reporter: github-check
-          # reporter: github-pr-check
           
       - name: Run rspec
         run: bundle exec rspec -f j -o tmp/rspec_results.json -f p
