@@ -15,16 +15,15 @@ jobs:
           MYSQL_PASSWORD: password
           MYSQL_ROOT_PASSWORD: password
     steps:
-      - name: Code Checkout
       - uses: actions/checkout@v2
       - name: Setup Ruby
-      - uses: actions/setup-ruby@v1
+        uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7.5
-      - run: |
+        run: |
           gem install bundler
           bundle install
       - name: Build and Test
-      - run: |
+        run: |
           bundle exec rake db:schema:load db:migrate
           bundle exec rspec
