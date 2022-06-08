@@ -61,6 +61,7 @@ group :test do
   gem 'rubocop-rails', require: false
   gem 'webdrivers'
   gem 'brakeman'
+  gem 'bundler-audit'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
