@@ -1,5 +1,8 @@
 name: CI
-on: [push]
+on: [pull_request]
+concurrency: 
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
 jobs:
   rspec:
     runs-on: ubuntu-latest
