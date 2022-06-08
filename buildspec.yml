@@ -8,7 +8,7 @@ phases:
 
   pre_build:
     commands:
-      - docker build --file Dockerfile --cache-from $REPO_URL:$REF_NAME --tag $REPO_URL:$REF_NAME --tag$REPO_URL:test .
+      - docker build --file Dockerfile --cache-from $REPO_URL:$REF_NAME --tag $REPO_URL:test .
 
   build:
     commands:
