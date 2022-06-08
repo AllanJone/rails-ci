@@ -7,6 +7,9 @@
 # Ignore .env.
 .env
 
+# Ignore .vscode.
+.vscode/settings.json
+
 # Ignore bundler config.
 /.bundle
 
