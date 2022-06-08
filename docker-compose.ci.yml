@@ -11,7 +11,7 @@ services:
       - MYSQL_PASSWORD=password
 
   rspec:
-    image: allan/rails:test
+    image: allan/rails:latest
     volumes:
       - .:/myapp
     command: "./run-tests.sh"
