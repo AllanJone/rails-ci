@@ -3,19 +3,23 @@ services:
   db:
     image: mysql:5.7
     restart: on-failure
-    ports:
-      - 3306
+    env_file:
+      - .env
     environment:
-      - MYSQL_DATABASE=myapp_test
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=${DATABASE_NAME}
+      - MYSQL_USER=${DATABASE_USERNAME}
+      - MYSQL_PASSWORD=${DATABASE_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./tmp/db:/var/lib/mysql
 
   rspec:
     image: 374357701248.dkr.ecr.ap-northeast-1.amazonaws.com/allan/rails:latest
     volumes:
       - .:/myapp
-    command: /scripts/run-tests.sh
+    ports:
+      - "3000:3000"
     depends_on:
       - db
-    environment:
-      DB_HOST_URL: db
+    command: /scripts/run-tests.sh
