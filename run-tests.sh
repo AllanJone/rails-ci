@@ -1,2 +1,2 @@
 #!/bin/bash
-bundle exec rake db:test:prepare && bundle exec rspec spec
+bundle exec bundle exec rake db:create db:schema:load && bundle exec rspec spec
