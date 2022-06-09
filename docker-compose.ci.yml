@@ -14,9 +14,7 @@ services:
     image: 374357701248.dkr.ecr.ap-northeast-1.amazonaws.com/allan/rails:latest
     volumes:
       - .:/myapp
-    commands:
-      - bundle exec rake db:test:prepare
-      - bundle exec rspec spec
+    command: /scripts/run-tests.sh
     depends_on:
       - db
     environment:

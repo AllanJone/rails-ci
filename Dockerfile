@@ -19,7 +19,9 @@ RUN bundle exec rails webpacker:compile
 
 # コンテナ起動時に実行させるスクリプトを追加
 COPY entrypoint.sh /usr/bin/
+COPY run-tests.sh /scripts/
 RUN chmod +x /usr/bin/entrypoint.sh
+RUN chmod a+x /scripts/*.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
