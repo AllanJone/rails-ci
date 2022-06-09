@@ -6,10 +6,10 @@ services:
     env_file:
       - .env
     environment:
-      - MYSQL_DATABASE=${DATABASE_NAME}
-      - MYSQL_USER=${DATABASE_USERNAME}
-      - MYSQL_PASSWORD=${DATABASE_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD}
+      - MYSQL_DATABASE=myapp_test
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
     ports:
       - "3306:3306"
     volumes:
