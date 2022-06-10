@@ -1,4 +1,4 @@
-FROM ruby:2.7.5
+FROM ruby:3.1.2
 
 # yarnパッケージ管理ツールをインストール
 RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
@@ -19,7 +19,9 @@ RUN bundle exec rails webpacker:compile
 
 # コンテナ起動時に実行させるスクリプトを追加
 COPY entrypoint.sh /usr/bin/
+COPY run-tests.sh /scripts/
 RUN chmod +x /usr/bin/entrypoint.sh
+RUN chmod a+x /scripts/*.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 

@@ -1,0 +1,18 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    volumes:
+      - ./init.sh:/docker-entrypoint-initdb.d/init.sh
+      - ./tmp/db:/var/lib/mysql
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --general-log=true --general-log-file=/var/log/mysql/query.log
+  
+  rspec:
+    image: 374357701248.dkr.ecr.ap-northeast-1.amazonaws.com/allan/rails:latest
+    volumes:
+      - ./log:/app/log
+    expose:
+      - 3000
+    command: /scripts/run-tests.sh
